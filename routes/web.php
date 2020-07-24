@@ -19,3 +19,5 @@ Route::get('/encrypt2','TestController@encrypt2');//非对称加密
 Route::post('dec3','TestController@dec3');//解密
 
 Route::get('sign','TestController@sign');//验签
+
+Route::get('sign2','TestController@sign2');

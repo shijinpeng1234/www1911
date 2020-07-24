@@ -90,4 +90,32 @@ class TestController extends Controller
         echo $response;
 
     }
+    public function sign2()
+    {
+        $data = "这是秘密";
+        $content = file_get_contents(storage_path("keys/priv.key"));
+        $prikey = openssl_get_privatekey($content);
+//        var_dump($prikey);
+        openssl_sign($data,$sign_str,$prikey,OPENSSL_ALGO_SHA1);
+        echo $sign_str;echo '<br>';
+        //post数据
+        $post_data = [
+            'data'=>$data,
+            'sign'=>$sign_str
+        ];
+        //将加密的文件发送
+        $url = 'http://api.1911.com/sign2';
+        //curl初始
+        $ch = curl_init();
+        //设置参数
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_POST,1);
+        curl_setopt($ch,CURLOPT_POSTFIELDS,$post_data);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        //发送请求
+        $response = curl_exec($ch);
+        echo $response;
+        curl_close($ch);
+
+    }
 }
