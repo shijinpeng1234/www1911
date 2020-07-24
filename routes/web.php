@@ -14,4 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/wx/token','TestController@getWxToken');
+Route::get('/encrypt','TestController@encrypt'); //对称加密
+Route::get('/encrypt2','TestController@encrypt2');//非对称加密
+Route::post('dec3','TestController@dec3');//解密
+
+Route::get('sign','TestController@sign');//验签
