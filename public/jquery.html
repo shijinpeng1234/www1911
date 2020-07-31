@@ -1,0 +1,18 @@
+<script src="/js/jquery.min.js" ></script>
+<script>
+    $.ajax({
+        url: "http://www.1911.com/ajax.php",
+        tyep: "GET",
+        dataType: "json",
+        success: function (data){
+            if(data.errno>0){
+                console.log("1111")
+            }else{
+                console.log("0000")
+            }
+        }
+    });
+
+</script>
+
+

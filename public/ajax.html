@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Ajax</h1>
+<script>
+    var url = "/ajax.php";
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET','/ajax.php',true);
+    xhr.send()
+
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === xhr.DONE){
+            if(xhr.status === 200){
+                var data = xhr.responseText;
+                var obj = JSON.parse(data);
+                if(obj.errno == 0)
+                {
+                    console.log(obj.data);
+                }else
+                {
+                    console.log(obj.msg);
+                }
+            }else{
+                alert('There was a problem with the request');
+            }
+        }
+    }
+
+</script>
+
+
+</body>
+</html>
