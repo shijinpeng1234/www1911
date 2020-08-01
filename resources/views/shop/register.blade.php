@@ -373,15 +373,15 @@
             <div class="row">
                 <form class="col s12">
                     <div class="input-field">
-                        <input type="text" class="validate user_name" placeholder="NAME" required>
+                        <input type="text" class="validate user_name" id="user_name"  placeholder="NAME" required>
                     </div>
                     <div class="input-field">
-                        <input type="email" placeholder="EMAIL" class="validate" required>
+                        <input type="email" placeholder="EMAIL" class="validate user_email" required>
                     </div>
                     <div class="input-field">
-                        <input type="password" placeholder="PASSWORD" class="validate" required>
+                        <input type="password" placeholder="PASSWORD" class="validate pwd" required>
                     </div>
-                    <div class="btn button-default">REGISTER</div>
+                    <div class="btn button-default" id="ok">REGISTER</div>
                 </form>
             </div>
         </div>
@@ -422,7 +422,28 @@
 <script src="/js/fakeLoader.min.js"></script>
 <script src="/js/animatedModal.min.js"></script>
 <script src="/js/main.js"></script>
+<script>
 
+    $(document).on("click","#ok",function(){
+    var user_name = $('#user_name').val();
+    var user_email = $('.user_email').val();
+    var pwd = $('.pwd').val();
+    alert(user_name)
+        $.ajax({
+            url: "http://api.1911.com/shop/registerdo",
+            type: "POST",
+            data:{'user_name':user_name,'user_email':user_email,'pwd':pwd},
+            dataType: "json",
+            success:function(data){
+               alert(data)
+            }
+        })
+    })
+
+
+
+
+</script>
 
 </body>
 </html>

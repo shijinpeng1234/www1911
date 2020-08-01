@@ -26,14 +26,17 @@ Route::get('sign2','TestController@sign2');//验签2
 
 Route::get('sign3','TestController@sign3');//验签加密
 
-Route::get('/shop/login','Shop\ShopController@login');
-Route::get('/shop/register','Shop\ShopController@register');
+Route::get('/shop/login','Shop\ShopController@login');//登录
+Route::get('/shop/register','Shop\ShopController@register');//注册
+
+
+
 
 Route::get('test/pay','TestController@testpay');
 Route::get('pay','TestController@pay');
 
 
-
+Route::get('/git','OauthController@git');
 
 
 
